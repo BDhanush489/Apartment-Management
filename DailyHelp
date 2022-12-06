@@ -1,0 +1,31 @@
+from cgitb import text
+from ctypes import alignment
+from tkinter import messagebox
+from turtle import left
+import mysql.connector
+from tkinter import*
+
+class ShowDailyHelp:
+    def __init__(self,root):
+        self.root=root 
+        self.root.title("Show Daily Help")
+        self.root.geometry("1200x480+80+170")
+        self.root.config(bg="light blue")
+        self.root.focus_force() 
+        title=Label(self.root,text="Show Daily Help",font=("goudy old style",20,"bold"),bg="black",fg="white").place(x=10,y=15,width=1180,height=35)
+        con=mysql.connector.connect(host="localhost",user="root",password="dhanush@sql489",database="AMS")
+        cur=con.cursor()
+        cur.execute("Select * from  DailyHelp")
+        y=60
+        x=10
+        data=cur.fetchall()
+        t=cur.rowcount
+        print(t)
+        for i in range(0,t,1):
+            title=Label(self.root,text=data[i],font=("goudy old style",12),bg="light blue").place(x=0,y=y,relwidth=1,height=30)
+            y=y+25
+
+if __name__=="__main__":
+    root=Tk()
+    obj=ShowDailyHelp(root)
+    root.mainloop()
