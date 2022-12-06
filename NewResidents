@@ -1,0 +1,83 @@
+from asyncio import exceptions
+from tkinter import messagebox
+import mysql.connector
+from PIL import Image,ImageTk
+from tkinter import*
+
+class ResidentList:
+    def __init__(self,root):
+        self.root=root 
+        self.root.title("Apartment Management System")
+        self.root.geometry("1200x480+80+170")
+        self.root.config(bg="light blue")
+        self.root.focus_force() 
+
+        title=Label(self.root,text="Residents",font=("goudy old style",20,"bold"),bg="black",fg="white").place(x=10,y=15,width=1180,height=35)
+
+        self.var_ResidentName=StringVar()
+        self.var_Contact=StringVar()
+        self.var_House=StringVar()
+        self.var_Details=StringVar()
+        self.var_Email=StringVar()
+        self.var_Date=StringVar()
+
+        lbl_ResidentName=Label(self.root,text = "Resident Name",font=("goudy old style",15,"bold"),bg="light blue").place(x=10,y=60)
+        lbl_Contact=Label(self.root,text = "Contact Number",font=("goudy old style",15,"bold"),bg="light blue").place(x=10,y=100)
+        lbl_House=Label(self.root,text = "House",font=("goudy old style",15,"bold"),bg="light blue").place(x=10,y=140)
+        lbl_Details=Label(self.root,text = "Profession Details",font=("goudy old style",15,"bold"),bg="light blue").place(x=10,y=180)
+        lbl_Email=Label(self.root,text = "Email",font=("goudy old style",15,"bold"),bg="light blue").place(x=10,y=220) 
+        lbl_Date=Label(self.root,text = "Registration_Date",font=("goudy old style",15,"bold"),bg="light blue").place(x=10,y=260)
+
+        txt_ResidentName=Entry(self.root,textvariable=self.var_ResidentName,font=("goudy old style",15),bg="light blue").place(x=200,y=60)
+        txt_Contact=Entry(self.root,textvariable=self.var_Contact,font=("goudy old style",15),bg="light blue").place(x=200,y=100)
+        txt_House=Entry(self.root,textvariable=self.var_House,font=("goudy old style",15,),bg="light blue").place(x=200,y=140)
+        txt_Details=Entry(self.root,textvariable=self.var_Details,font=("goudy old style",15,),bg="light blue").place(x=200,y=180)
+        txt_Email=Entry(self.root,textvariable=self.var_Email,font=("goudy old style",15,),bg="light blue").place(x=200,y=220) 
+        txt_Date=Entry(self.root,textvariable=self.var_Date,font=("goudy old style",15),bg="light blue").place(x=200,y=260)
+
+        self.btn_add=Button(self.root,text="Save",font=("goudy old style",15,"bold"),bg="#2196f3",fg="white",cursor="hand2",command=self.add).place(x=150,y=400,width=110,height=40)
+        self.btn_update=Button(self.root,text="Update",font=("goudy old style",15,"bold"),bg="#4caf50",fg="white",cursor="hand2",command=self.update).place(x=270,y=400,width=110,height=40)
+        self.btn_clear=Button(self.root,text="Clear",font=("goudy old style",15,"bold"),bg="#f44336",fg="white",cursor="hand2",command=self.clear).place(x=390,y=400,width=110,height=40)
+    
+    def add(self):
+        con=mysql.connector.connect(host="localhost",user="root",password="dhanush@sql489",database="AMS")
+        cur=con.cursor()
+        cur.execute("insert into ResidentDetails (Name,Contact,BHK,Profession,Email,Date) values (%s,%s,%s,%s,%s,%s)",(
+        self.var_ResidentName.get(),
+        self.var_Contact.get(),
+        self.var_House.get(),
+        self.var_Details.get(),
+        self.var_Email.get(),
+        self.var_Date.get()
+        ))
+        con.commit()
+        messagebox.showinfo("Success","Resident Details Added Successfully")
+
+    def update(self):
+        con=mysql.connector.connect(host="localhost",user="root",password="dhanush@sql489",database="AMS")
+        cur=con.cursor()
+        cur.execute("update ResidentDetails set Contact=%s,BHK=%s,Profession=%s,Email=%s,Date=%s where name=%s",(
+        self.var_Contact.get(),
+        self.var_House.get(),
+        self.var_Details.get(),
+        self.var_Email.get(),
+        self.var_Date.get(),
+        self.var_ResidentName.get()
+
+        ))
+        con.commit()
+        messagebox.showinfo("Success","Resident Details Updated Successfully")
+
+    def clear(self):
+        self.var_ResidentName.set("")
+        self.var_Contact.set("")
+        self.var_House.set("")
+        self.var_Details.set("")
+        self.var_Email.set("")
+        self.var_Date.set("")
+
+if __name__=="__main__":
+    root=Tk()
+    obj=ResidentList(root)
+    root.mainloop()
+
