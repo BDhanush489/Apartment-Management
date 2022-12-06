@@ -1,0 +1,56 @@
+from Apartment import Main
+from asyncio import current_task, exceptions
+from importlib.metadata import EntryPoint, EntryPoints, entry_points
+from logging import exception
+import os
+from tkinter import*
+from tkinter import messagebox
+from PIL import Image,ImageTk
+
+swich=False 
+class Actual:
+    def __init__(self,root):
+        self.root=root
+        self.root.title("Login System")
+        self.root.config(bg="white")
+        self.root.geometry("580x640+350+40")
+        self.bg_Image = Image.open("images modern.jpg")
+        self.bg_Image = self.bg_Image.resize((580,750),Image.ANTIALIAS)
+        self.bg_Image=ImageTk.PhotoImage(self.bg_Image)
+        self.lbl_img=Label(self.root,image=self.bg_Image).place(x=0,y=0)
+
+        self.var_name=StringVar()                                                                  
+        self.var_password=StringVar()
+
+        login_frame= LabelFrame(self.root,text="",bg="white")
+        login_frame.place(x=70,y=40,width=450,height=560)
+
+        title = Label(login_frame,text="Login System",font=("elephant",30,"bold"),bg="white").place(x=0,y=30,relwidth=1)                                                           
+        lbl_user=Label(login_frame,text="Username",font=("goudy old style",15), bg="white",fg="black").place(x=50,y=100,width=100,height=30)      
+        txt_user=Entry(login_frame,textvariable=self.var_name,font=("times new roman",15),bg="white"). place(x=50,y=140,height=30,width=250)
+
+        lbl_pass=Label(login_frame,text="Password",font=("goudy old style",15),bg="white",fg="black").place(x=50,y=200,width=100,height=30)  
+        txt_pass=Entry(login_frame,textvariable=self.var_password,font=("times new roman",15),bg="white").place(x=50,y=240,width=250,height=30)
+
+        btn_login=Button(login_frame,text="Log In",font=("Arial Rounded MT Bold",15),bg="#00B0F0",activebackground="cyan",fg="light yellow",activeforeground="light yellow",command=self.login).place(x=50,y=300,)
+
+        hr=Label(login_frame,bg="lightgrey").place(x=50,y=370,width=250,height=2)
+        or_=Label(login_frame,text="OR",bg="light grey",font=("Times New Roman",15,"bold")).place(x=150,y=355)
+        hsr=Label(login_frame,bg="white",text="Forgot Password",font=("Times New Roman",10)).place(x=40,y=400,width=250,height=20)
+
+    def login(self):
+        if self.var_name.get()=="Admin" and self.var_password.get()== "12345678":
+            self.Admin_portal()
+
+    def Admin_portal(self):
+        self.new_win=Toplevel(self.root)    
+        self.new_obj=Main(self.new_win) 
+
+if __name__=="__main__":
+    root=Tk()
+    obj=Actual(root)
+    root.mainloop()
+    
+if swich==True:
+    root.destroy()
+
