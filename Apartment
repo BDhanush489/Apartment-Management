@@ -1,0 +1,78 @@
+from tkinter import*
+from emergency_no import EmerInp
+from tkinter import messagebox
+from turtle import width
+from NewResidents import ResidentList
+from Residents import ShowResidents
+from AddDailyHelp import AddDailyHelp
+from DailyHelp import ShowDailyHelp
+from Events import EventsInp
+from PIL import Image,ImageTk 
+
+class Main:
+    def __init__(self,root):
+        self.root=root
+        self.root.focus_force() 
+        self.root.title("Apartment Management System")
+        self.root.geometry("1360x745+0+0")
+        self.root.config(bg="white")
+        
+        title=Label(self.root,text="Apartment Management System",font=("goudy old style",20,"bold"),bg="black",fg="white").place(x=0,y=0,relwidth=1,height=50)
+        
+        M_Frame= LabelFrame(self.root,text="Menus",font=("times new roman",15),bg="white")
+        M_Frame.place(x=10,y=70,width=1345,height=620)
+        
+        btn_course=Button(M_Frame,text="New Residents",font=("goudy old style",15,"bold"),bg="#0b5377",fg="white",cursor="hand2",command=self.add_resident).place(x=20,y=5,width=200,height=40) 
+        btn_course=Button(M_Frame,text="Residents",font=("goudy old style",15,"bold"),bg="#0b5377",fg="white",cursor="hand2",command=self.show_resident).place(x=240,y=5,width=200,height=40) 
+        btn_course=Button(M_Frame,text="Add Daily Help",font=("goudy old style",15,"bold"),bg="#0b5377",fg="white",cursor="hand2",command=self.add_Dailyhelp).place(x=460,y=5,width=200,height=40) 
+        btn_course=Button(M_Frame,text="Daily Help",font=("goudy old style",15,"bold"),bg="#0b5377",fg="white",cursor="hand2",command=self.show_Dailyhelp).place(x=680,y=5,width=200,height=40)
+        btn_course=Button(M_Frame,text="Logout",font=("goudy old style",15,"bold"),bg="#0b5477",fg="white",cursor="hand2",command=self.logout).place(x=900,y=5,width=200,height=40)
+        btn_course=Button(M_Frame,text="Exit",font=("goudy old style",15,"bold"),bg="#0b5377",fg="white",cursor="hand2",command=self.Exit).place(x=1120,y=5,width=200,height=40)
+        btn_course=Button(M_Frame,text="Add Events",font=("goudy old style",15,"bold"),bg="#0b5377",fg="white",cursor="hand2").place(x=20,y=70,width=200,height=40)
+        btn_course=Button(M_Frame,text="Show Events",font=("goudy old style",15,"bold"),bg="#0b5377",fg="white",cursor="hand2",command=self.show_Events).place(x=20,y=140,width=200,height=40)
+        btn_course=Button(M_Frame,text="Add Notice",font=("goudy old style",15,"bold"),bg="#0b5377",fg="white",cursor="hand2").place(x=20,y=210,width=200,height=40)
+        btn_course=Button(M_Frame,text="Show Notice",font=("goudy old style",15,"bold"),bg="#0b5377",fg="white",cursor="hand2").place(x=20,y=280,width=200,height=40)
+        btn_course=Button(M_Frame,text="Emergency No's",font=("goudy old style",15,"bold"),bg="#0b5377",fg="white",cursor="hand2",command=self.show_Emergency_Numbers).place(x=20,y=350,width=200,height=40)
+        self.bg_Image = Image.open("initial.jpg")
+        self.bg_Image = self.bg_Image.resize((1050,490),Image.ANTIALIAS)
+        self.bg_Image=ImageTk.PhotoImage(self.bg_Image)
+        self.lbl_img=Label(self.root,image=self.bg_Image).place(x=265,y=170) 
+
+    def add_resident(self):
+         self.new_win=Toplevel(self.root)    
+         self.new_obj=ResidentList(self.new_win) 
+
+    def show_resident(self):
+         self.new_win=Toplevel(self.root)    
+         self.new_obj=ShowResidents(self.new_win)
+    
+    def add_Dailyhelp(self):
+         self.new_win=Toplevel(self.root)    
+         self.new_obj=AddDailyHelp(self.new_win)
+
+    def show_Dailyhelp(self):
+         self.new_win=Toplevel(self.root)    
+         self.new_obj=ShowDailyHelp(self.new_win)
+
+    def show_Events(self):
+         self.new_win=Toplevel(self.root)    
+         self.new_obj=EventsInp(self.new_win)
+     
+    def show_Emergency_Numbers(self):
+         self.new_win=Toplevel(self.root)    
+         self.new_obj=EmerInp(self.new_win)
+
+    def logout(self):
+          self.root.destroy()
+          swich=False
+    
+    def Exit(self):
+        m=messagebox.askyesno("Confirm","Do you realy want to Exit")
+        if m==True:
+            self.root.destroy()
+    
+
+if __name__=="__main__":
+    root=Tk()
+    obj=Main(root)
+    root.mainloop()
