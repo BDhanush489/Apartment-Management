@@ -8,7 +8,7 @@ The Apartment Management System is a comprehensive software solution designed to
 _User Authentication_
 
 **Login Page: ** Users can securely log in by entering their username and password.
-User Roles: Different access levels are provided for residents, workers, and administrators, ensuring data privacy and security.
+**User Roles:** Different access levels are provided for residents, workers, and administrators, ensuring data privacy and security.
 
 _Resident Management_
 
@@ -18,16 +18,16 @@ _Resident Management_
 _Worker Management_
 
 **Worker Directory:** The system maintains a directory of workers, including their contact information and roles.
-Assigning Tasks: Administrators can assign tasks to workers and track their progress.
+**Assigning Tasks:** Administrators can assign tasks to workers and track their progress.
 
 _Events and Notices_
 
 **Event Calendar:** Residents can view upcoming events, including community gatherings and maintenance schedules.
-Important Notices: Administrators can post important notices for residents to stay informed.
+**Important Notices:** Administrators can post important notices for residents to stay informed.
 
 _Maintenance Requests_
 
-**Request Submission: **Residents can submit maintenance requests, specifying the issue and urgency.
+**Request Submission: ** Residents can submit maintenance requests, specifying the issue and urgency.
 **Task Assignment:** Administrators assign maintenance tasks to workers for prompt resolution.
 
 _Technologies Used_
