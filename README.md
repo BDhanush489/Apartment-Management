@@ -7,7 +7,7 @@ The Apartment Management System is a comprehensive software solution designed to
 
 _User Authentication_
 
-**Login Page: **Users can securely log in by entering their username and password.
+**Login Page: ** Users can securely log in by entering their username and password.
 User Roles: Different access levels are provided for residents, workers, and administrators, ensuring data privacy and security.
 
 _Resident Management_
@@ -32,15 +32,15 @@ _Maintenance Requests_
 
 _Technologies Used_
 
-**MySQL: **The database management system used for storing resident, worker, and event data.
-**Python: **The programming language used for developing the backend logic.
-**Tkinter: **The graphical user interface library used to create the application's frontend.
+**MySQL: ** The database management system used for storing resident, worker, and event data.
+**Python: ** The programming language used for developing the backend logic.
+**Tkinter: ** The graphical user interface library used to create the application's frontend.
 
 _How to Use_
 
 **Login:** Open the application and log in using your username and password.
 **Dashboard:** Depending on your role, you will have access to different features such as resident management, worker management, event calendar, and maintenance requests.
-**Navigation: **Use the navigation menu to access specific functionalities.
+**Navigation: ** Use the navigation menu to access specific functionalities.
 **Edit Profile:** Residents can update their profiles, while administrators can manage residents and workers.
 **View Events and Notices:** Stay updated with community events and important notices.
 **Submit Maintenance Requests:** Residents can submit maintenance requests for any apartment-related issues.
