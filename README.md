@@ -3,7 +3,7 @@ _**Apartment Management System**_
 **Introduction**
 The Apartment Management System is a comprehensive software solution designed to streamline the management of residential complexes. It is built using MySQL, Python, and Tkinter, offering a user-friendly interface for residents, workers, and administrators. This system efficiently manages resident data, worker information, events, and important notices.
 
-**Features**
+**Features:**
 
 _User Authentication_
 
